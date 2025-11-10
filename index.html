@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dear Angel</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: rgb(255, 196, 220);
+      font-family: cursive;
+      color: #4a4a4a;
+      transition: background-color 0.6s ease;
+      text-align: center;
+    }
+
+    /* Center the first video */
+    #video-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .birthday-video {
+      width: 45%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(255, 100, 150, 0.3);
+      pointer-events: none; /* 🌸 disables all clicks/interactions */
+      user-select: none; /* prevents highlight/drag */
+    }
+
+    /* “To Angel…” button */
+    .button {
+      background-color: #f4b6c2;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      visibility: hidden;
+      opacity: 0;
+      margin-top: 15px;
+      transform: translateY(10px);
+    }
+
+    .button.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .button:hover {
+      background-color: #ff8fb8;
+    }
+
+    /* Reveal + play buttons */
+    .reveal-memory-btn {
+      background-color: #ff9db5;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: 0.3s;
+    }
+
+    .reveal-memory-btn:hover {
+      background-color: #ff7ea4;
+      transform: scale(1.05);
+    }
+
+    /* Message section */
+    .message-section {
+      display: none;
+      padding: 40px 20px;
+      background-color: #ffe4ec;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 60px auto;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.5);
+      animation: fadeIn 0.8s ease;
+    }
+
+    .message-section h1 {
+      color: #e86b9b;
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-family: "Times New Roman", serif;
+    }
+
+    .message-section p {
+      font-family: "Times New Roman", serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #5c5c5c;
+      margin: 0 auto 15px;
+      max-width: 500px;
+    }
+
+    .heart {
+      font-size: 28px;
+      color: #ff6699;
+      margin-top: 20px;
+    }
+
+    /* Hidden memory section */
+    #memory-section {
+      display: none;
+      margin-top: 25px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    #playMemoryBtn {
+      display: block;
+      margin: 15px auto 0 auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- First Video Section -->
+  <div id="video-section">
+    <!-- 🌸 removed controls so it just looks “pasted” -->
+    <video class="birthday-video" id="video1" autoplay playsinline>
+      <source src="https://raw.githubusercontent.com/tt27tc/enjerureal/main/hbdangellyn - Made with Clipchamp.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <button id="revealButton" class="button" onclick="showMessage()">To Angel...</button>
+  </div>
+
+  <!-- Message Section -->
+  <div id="message-section" class="message-section">
+    <h1>Happy Birthday</h1>
+  <p style="color: #e86b9b; font-family: monospace; white-space: pre; text-align: center;">
+⠀⠀⠀⠀⣶⣿⣿⣶⣄⣀⣴⣾⣷⣦⠀⠀⠀⠀
+⠀⠀⢀⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣤⣄⠀⠀
+⢀⡞⢉⣰⡌⠙⢏⠉⠁⠀⠉⡹⠁⣰⣄⠈⢳⠀
+⢸⡅⠾⠟⠁⠀⠈⠆⠀⠀⡴⠁⠀⠙⠻⠃⣸⠃
+⠀⢹⡆⠀⠀⠀⠀⢸⡄⢠⠅⠀⠀⠀⠀⢸⡇⠀
+⠀⢸⠀⠀⠀⢠⣄⢐⠂⠘⡄⣤⡄⠀⠀⠀⡇⠀
+⠀⠸⣇⠀⠀⠈⠽⠋⡹⡿⠉⠸⡁⠀⠀⣸⠃⠀
+⠀⠀⠙⢦⣀⢸⠀⠀⠉⠉⠀⠀⢡⣠⡴⠋⠀⠀
+⠀⠀⠀⣠⣼⣿⣷⣶⣶⣶⣶⣾⣿⣷⣆⠀⠀⠀
+⠀⢀⡾⠁⠀⡽⠛⠛⠋⠈⠙⠛⢻⣁⠈⠳⡄⠀
+⠀⢸⣠⠖⠋⠉⠳⣄⠀⠀⢀⡞⠋⠉⠙⢦⡿⠀
+⠀⠀⢿⠀⣾⣶⡄⢸⡄⠀⣼⠀⣴⣶⡆⢸⡇⠀
+⠀⠀⠹⡄⠻⠿⠃⣸⠧⠤⢽⡀⠻⠿⢃⡼⠁⠀
+⠀⠀⠀⠙⠒⠒⠚⠁⠀⠀⠀⠉⠛⠒⠋⠁⠀⠀
+</p>
+
+    <p>
+        Dear Angel, how are you? :)  
+    </p>
+    <p>
+        I made this little message to remind you how special you are. After all, this is your day. 
+        May the things that bother your tiny fragile heart be at peace when you think about how loved you truly are. 
+        Remember when you decided to open up to me about what's bothering you that morning... thank you.
+    </p>
+    <p>
+        I thought that what a coincidental intersection of two pure things. 
+        But upon further thought, I realized that everything's about the observer's perspective.
+        I heard you. That's the missing piece of the puzzle. With a little lack of something, things tend to go downhill,
+        won't you agree? Lack of a little smile, lack of softness in our voices, lack of this and that. <br><br> It all goes... ( ╹ -╹)? <br><br>
+        Eventually it all makes sense because all we can do as humans is do our best in our own imperfect ways, right? 
+        Yes, yes. Imperfection of us humans is perfect. For me, that's where the most beautiful things happen.
+        Say, if you weren't sad that time, am I to have this in my brain like the hum of a gentle grandma? 
+        Will I be able to write such a touching piece like this as I hope and intend it to be?
+        
+        I can't help but to think that life is so worthwhile when you have ears that listen, 
+        a shoulder to cry on, and a hand that pats you on the back. 
+        God is real because He is everything from which kindness roots.
+        <br><br>That is why, I thank you, Angel. <br><br>
+    <p>
+        Lastly, I’ve come to discern that things happen much like a shooting star... good things and bad things--same thing.
+To me, they’re made of the same substance. Our friendship will come to that point too.
+May it fade as naturally as decomposition does in the woods.
+If my body were to decay in the mountains, it would still serve a purpose to the surrounding species.
+My substance would turn from a whole human body into a cluster of mushrooms… or, if I’m lucky, into a tree. May the universe let our story
+be that kind of beautiful.
+
+To the years that lie ahead of us, the years yet to come, may they all be beautiful.
+I wish you a future filled with beauty, one that enriches you with all the glory and greatness of life.
+    </p>
+        
+    <p>
+     Like my favorite author Jane Austen would say, <br>"There is no charm equal to tenderness of heart." <br>
+    I, with the people who thought of you genuinely, are here to wish you a <br>happy, happy birthday.
+    </p>
+
+    <p style="text-align: right; margin-right: 20px; font-family: 'Times New Roman', serif;">
+  Your loving friend, <br>
+  Charlyn <br>
+  <span style="font-size: 12px; color: #555;">11/11/2025</span>
+</p>
+
+
+
+    <!-- Button to reveal the memory video -->
+    <button class="reveal-memory-btn" id="showMemoryBtn">Done reading? :)</button>
+
+    <!-- Hidden memory section -->
+    <div id="memory-section">
+      <!-- 🌸 removed controls + disabled interaction -->
+      <video class="birthday-video" id="memoryVideo" playsinline>
+        <source src="https://raw.githubusercontent.com/tt27tc/vidgelchai/main/highvolmemoryangel.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <button class="reveal-memory-btn" id="playMemoryBtn">▶</button>
+    </div>
+  </div>
+
+  <script>
+    const video1 = document.getElementById("video1");
+    const button = document.getElementById("revealButton");
+    const memorySection = document.getElementById("memory-section");
+    const showMemoryBtn = document.getElementById("showMemoryBtn");
+    const playMemoryBtn = document.getElementById("playMemoryBtn");
+    const memoryVideo = document.getElementById("memoryVideo");
+
+    // Show the "To Angel..." button after 14 seconds
+    video1.addEventListener("timeupdate", () => {
+      if (video1.currentTime >= 14 && !button.classList.contains("show")) {
+        button.classList.add("show");
+      }
+    });
+
+    function showMessage() {
+      document.getElementById("video-section").style.display = "none";
+      document.getElementById("message-section").style.display = "block";
+      document.body.style.backgroundColor = "#ffe4ec";
+      // 💕 keep first video’s music playing
+      video1.muted = false;
+    }
+
+    // Reveal memory section
+    showMemoryBtn.addEventListener("click", () => {
+      memorySection.style.display = "block";
+      showMemoryBtn.style.display = "none";
+    });
+
+    // Play the memory video and stop the first one
+    playMemoryBtn.addEventListener("click", () => {
+      video1.pause(); // stop first video music only when this starts
+      memoryVideo.play();
+      playMemoryBtn.style.display = "none";
+    });
+  </script>
+</body>
+</html>
